@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Urban Void | Sreehari Arun</title>
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <meta name="description"
+        content="Urban Void concept by Sreehari Arun. A conceptual public space project in Cochin, India, designed to reintroduce breathing spaces into dead urban fabrics.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,50 +22,11 @@
 
 <body class="project-page">
 
-    <header class="site-header">
-        <div class="logo">
-            <a href="../index.html" class="logo-link">
-                <img src="../assets/sa-logo.svg" alt="SA Logo" class="logo-mark">
-                <div class="logo-text">
-                    <h1>Sreehari Arun</h1>
-                    <span class="designation">Architect</span>
-                </div>
-            </a>
-        </div>
-        <nav class="main-nav desktop-only">
-            <a href="../index.html#hero" class="nav-link home-icon" aria-label="Home"
-                style="display: flex; align-items: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                </svg>
-            </a>
-            <a href="../index.html#projects" class="nav-link">Work</a>
-            <a href="../index.html#info" class="nav-link">Practice</a>
-            <a href="mailto:hello@sreehariarun.com" class="nav-link">Contact</a>
-        </nav>
+    <!-- Inject Header -->
+    <div id="header-inject"></div>
 
-        <div class="header-right">
-            <!-- Mobile Menu Toggle -->
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Overlay Menu -->
-    <div class="overlay-menu">
-        <nav class="mobile-nav">
-            <a href="../index.html#projects" class="mobile-link">Work</a>
-            <a href="../index.html#info" class="mobile-link">Practice</a>
-            <a href="mailto:hello@sreehariarun.com" class="mobile-link">Contact</a>
-        </nav>
-        <div class="overlay-footer">
-            <span>&copy; 2026 Sreehari Arun</span>
-        </div>
-    </div>
+    <!-- Inject Overlay -->
+    <div id="overlay-inject"></div>
 
     <main>
         <section class="project-hero">
@@ -125,24 +88,21 @@
         </section>
 
         <section class="next-project">
-            <a href="project-4.html">
-                <span class="next-label">Next Project</span>
+            <a href="project-2.html" class="nav-item prev">
+                <span class="nav-label">Previous Project</span>
+                <h2>Vertical Living</h2>
+            </a>
+            <a href="project-4.html" class="nav-item next">
+                <span class="nav-label">Next Project</span>
                 <h2>Civic Center</h2>
             </a>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-left">
-            <span>&copy; 2026 Sreehari Arun</span>
-        </div>
-        <div class="footer-right">
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Behance</a>
-        </div>
-    </footer>
+    <!-- Inject Footer -->
+    <div id="footer-inject"></div>
 
+    <script src="../components.js"></script>
     <script src="../script.js"></script>
 </body>
 

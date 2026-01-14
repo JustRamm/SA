@@ -39,42 +39,8 @@
 
 
 
-    <header class="site-header">
-        <div class="logo">
-            <a href="index.html" class="logo-link">
-                <img src="assets/sa-logo.svg" alt="SA Logo" class="logo-mark">
-                <div class="logo-text">
-                    <h1>Sreehari Arun</h1>
-                    <span class="designation">Architect</span>
-                </div>
-            </a>
-        </div>
-
-        <!-- Desktop Nav -->
-        <nav class="main-nav desktop-only">
-            <a href="#projects" class="nav-link active">Work</a>
-            <a href="#info" class="nav-link">Practice</a>
-            <a href="mailto:hello@sreehariarun.com" class="nav-link">Contact</a>
-        </nav>
-
-        <div class="header-right">
-            <div class="view-toggle-wrapper">
-                <span class="toggle-label">View:</span>
-                <button id="view-toggle-btn" class="toggle-btn"
-                    aria-label="Toggle between technical and pictorial view">
-                    <span class="toggle-option active" data-mode="technical">Technical</span>
-                    <span class="toggle-divider">/</span>
-                    <span class="toggle-option" data-mode="pictorial">Pictorial</span>
-                </button>
-            </div>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="menu-toggle" aria-label="Toggle Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </div>
-    </header>
+    <!-- Inject Header -->
+    <div id="header-inject"></div>
 
     <!-- Structural Grid Lines -->
     <div class="bg-lines">
@@ -85,17 +51,8 @@
         <div class="line"></div>
     </div>
 
-    <!-- Overlay Menu -->
-    <div class="overlay-menu">
-        <nav class="mobile-nav">
-            <a href="#projects" class="mobile-link">Work</a>
-            <a href="#info" class="mobile-link">Practice</a>
-            <a href="mailto:hello@sreehariarun.com" class="mobile-link">Contact</a>
-        </nav>
-        <div class="overlay-footer">
-            <span>&copy; 2026 Sreehari Arun</span>
-        </div>
-    </div>
+    <!-- Inject Overlay -->
+    <div id="overlay-inject"></div>
 
     <main>
         <section id="hero" class="hero-section">
@@ -344,17 +301,10 @@
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-left">
-            <span>&copy; 2026 Sreehari Arun</span>
-        </div>
-        <div class="footer-right">
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Behance</a>
-        </div>
-    </footer>
+    <!-- Inject Footer -->
+    <div id="footer-inject"></div>
 
+    <script src="components.js"></script>
     <script src="script.js"></script>
 </body>
 

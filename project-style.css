@@ -195,20 +195,37 @@
 
 
 /* --- Navigation Loop --- */
+/* --- Navigation Loop --- */
 .next-project {
     border-top: 1px solid var(--line-color);
     padding: 8rem var(--padding-global);
     display: flex;
-    justify-content: flex-end;
-    /* Align to right */
+    justify-content: space-between;
+    /* Space between Prev and Next */
+    align-items: center;
     background: var(--bg-color);
 }
 
-.next-project a {
-    text-align: right;
+.nav-item {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    color: var(--text-color);
 }
 
-.next-label {
+.nav-item.next {
+    text-align: right;
+    margin-left: auto;
+    /* Push to right if alone */
+}
+
+.nav-item.prev {
+    text-align: left;
+    margin-right: auto;
+    /* Push to left if alone */
+}
+
+.nav-label {
     display: block;
     font-family: var(--font-mono);
     font-size: 0.8rem;
@@ -222,14 +239,43 @@
     line-height: 1;
     color: transparent;
     -webkit-text-stroke: 1px var(--text-color);
-    /* Outline style */
     transition: all 0.4s ease;
+    margin: 0;
 }
 
-.next-project a:hover h2 {
+.nav-item:hover h2 {
     color: var(--text-color);
     -webkit-text-stroke: 1px var(--text-color);
     font-style: italic;
+}
+
+/* Minimal Previous Button Override */
+.nav-item.prev .nav-label,
+.nav-item.prev h2 {
+    display: none;
+    /* Hide specific text content for Prev */
+}
+
+.nav-item.prev {
+    /* Define explicit size for touch targets but keep visual minimal */
+    padding: 2rem 2rem 2rem 0;
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+.nav-item.prev:hover {
+    opacity: 1;
+}
+
+.nav-item.prev::after {
+    /* Simple CSS Arrow */
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-left: 2px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
+    transform: rotate(45deg);
 }
 
 

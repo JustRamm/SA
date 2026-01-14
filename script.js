@@ -1,17 +1,33 @@
 // Preloader Logic
 window.addEventListener('load', () => {
+    // If we are on a project page, mark intro as shown so navigating to home skips it
+    if (document.body.classList.contains('project-page')) {
+        sessionStorage.setItem('introShown', 'true');
+    }
+
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        // Guaranteed min display time or wait for load
-        setTimeout(() => {
+        // Check if user has already visited in this session
+        if (sessionStorage.getItem('introShown')) {
+            // Immediately hide without animation
             preloader.classList.add('loaded');
-
-            // Optional: Trigger hero animations explicitly here if they depend on load
-        }, 3000); // 3s minimum to see the animation
+            preloader.style.display = 'none'; // Ensure it's gone
+        } else {
+            // First time: Show animation
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+                sessionStorage.setItem('introShown', 'true');
+            }, 3000); // 3s minimum to see the animation
+        }
     }
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Inject reusable components (Header, Footer, Overlay)
+    // Ensure components.js is loaded before script.js in HTML
+    if (typeof loadComponents === 'function') {
+        loadComponents();
+    }
     // === View Toggle Logic ===
     const toggleBtn = document.getElementById('view-toggle-btn');
     const toggleOptions = document.querySelectorAll('.toggle-option');
@@ -89,6 +105,58 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // === Scroll Spy for Navigation (Desktop) ===
+    function initScrollSpy() {
+        // Only run on non-project pages (Home)
+        if (document.body.classList.contains('project-page')) return;
+
+        const sections = ['hero', 'projects', 'info'];
+        const navLinks = document.querySelectorAll('.desktop-only .nav-link');
+
+        const onScroll = () => {
+            // Default to 'hero' content if at very top
+            let current = '';
+
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    // Trigger point: when section reaches upper part of viewport
+                    // 150px offset handles header height and visual comfort
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+
+                    if (window.scrollY >= (sectionTop - 200)) {
+                        current = id;
+                    }
+                }
+            });
+
+            // Special Case: At the very top, ensure Home (hero) is active
+            if (window.scrollY < 100) {
+                current = 'hero';
+            }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+
+                // Check if link matches the current section
+                // We use includes('#id') to match standard anchors
+                const href = link.getAttribute('href');
+                if (href && current && href.includes('#' + current)) {
+                    link.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', onScroll);
+        // Initial check
+        onScroll();
+    }
+
+    // Initialize Spy
+    initScrollSpy();
+
     // === Kinetic Features ===
 
     // 1. Noise Overlay Injection
