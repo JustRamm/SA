@@ -1,4 +1,4 @@
-# Sreehari Arun - Architectural Portfolio
+# <img src="assets/sa-logo.svg" alt="Sreehari Arun Logo" width="100" /> Sreehari Arun - Architectural Portfolio
 
 A minimalist, high-performance portfolio website for Sreehari Arun, an architect specializing in brutalist, minimal, and technical design. The site serves as a digital exhibition space, blending rigorous technical documentation with emotive spatial rendering.
 

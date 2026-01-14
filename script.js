@@ -89,4 +89,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // === Lightbox Logic ===
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    let lightbox = document.querySelector('.lightbox');
+
+    // Create lightbox if it doesn't exist (e.g. on pages where we haven't added HTML manually)
+    if (!lightbox) {
+        const lightboxHTML = `
+        <div class="lightbox">
+            <button class="lightbox-close" aria-label="Close Lightbox">&times;</button>
+            <img src="" alt="Full Screen View" class="lightbox-content">
+        </div>`;
+        document.body.insertAdjacentHTML('beforeend', lightboxHTML);
+        lightbox = document.querySelector('.lightbox');
+    }
+
+    const lightboxImg = lightbox.querySelector('.lightbox-content');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+
+    if (galleryItems.length > 0) {
+        galleryItems.forEach(img => {
+            img.addEventListener('click', () => {
+                const src = img.getAttribute('src');
+                lightboxImg.setAttribute('src', src);
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            });
+        });
+
+        // Close functions
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                lightboxImg.setAttribute('src', ''); // Clear src after fade out
+            }, 300);
+        };
+
+        lightboxClose.addEventListener('click', closeLightbox);
+
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    }
 });
