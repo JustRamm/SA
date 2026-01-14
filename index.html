@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sreehari Arun | Architect</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <meta name="description"
+        content="Portfolio of Sreehari Arun, an architect focusing on brutalist, minimal, and technical design.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="mode-technical">
+
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <svg class="loader-svg" viewBox="0 0 120 120">
+                <!-- Architectural "Floor Plan" Square -->
+                <rect class="loader-rect" x="10" y="10" width="100" height="100" />
+                <!-- Center Line / Axis -->
+                <line class="loader-line" x1="60" y1="10" x2="60" y2="110" />
+                <line class="loader-line" x1="10" y1="60" x2="110" y2="60" />
+            </svg>
+        </div>
+        <div class="loader-text">
+            <span>Sreehari Arun</span>
+        </div>
+    </div>
+
+
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html" class="logo-link">
+                <img src="assets/sa-logo.svg" alt="SA Logo" class="logo-mark">
+                <div class="logo-text">
+                    <h1>Sreehari Arun</h1>
+                    <span class="designation">Architect</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Desktop Nav -->
+        <nav class="main-nav desktop-only">
+            <a href="#projects" class="nav-link active">Work</a>
+            <a href="#info" class="nav-link">Practice</a>
+            <a href="mailto:hello@sreehariarun.com" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="view-toggle-wrapper">
+                <span class="toggle-label">View:</span>
+                <button id="view-toggle-btn" class="toggle-btn"
+                    aria-label="Toggle between technical and pictorial view">
+                    <span class="toggle-option active" data-mode="technical">Technical</span>
+                    <span class="toggle-divider">/</span>
+                    <span class="toggle-option" data-mode="pictorial">Pictorial</span>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Structural Grid Lines -->
+    <div class="bg-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <!-- Overlay Menu -->
+    <div class="overlay-menu">
+        <nav class="mobile-nav">
+            <a href="#projects" class="mobile-link">Work</a>
+            <a href="#info" class="mobile-link">Practice</a>
+            <a href="mailto:hello@sreehariarun.com" class="mobile-link">Contact</a>
+        </nav>
+        <div class="overlay-footer">
+            <span>&copy; 2026 Sreehari Arun</span>
+        </div>
+    </div>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="hero-bg">
+                <img src="assets/hero_abstract.png" alt="Abstract Architectural Form">
+            </div>
+            <div class="hero-content">
+                <h2 class="hero-title">
+                    <span class="hero-title-wrapper">
+                        <span>Structuring</span>
+                    </span>
+                    <span class="hero-title-wrapper">
+                        <!-- Indented via CSS -->
+                        <span class="indent-text">Void & Form</span>
+                    </span>
+                </h2>
+                <div class="hero-footer">
+                    <p class="hero-subtitle">A multidisciplinary studio exploring the intersection of technical
+                        precision
+                        and human experience.</p>
+                    <div class="scroll-indicator">
+                        <span>Scroll</span>
+                        <div class="line-indicator"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <!-- Header for the section -->
+            <div class="section-header">
+                <span class="section-label">01 / Selected Work</span>
+            </div>
+
+            <div class="project-grid">
+                <!-- Project 1: Large Feature -->
+                <a href="projects/project-1.html" class="project-card span-2 fade-in-section delay-100">
+                    <div class="project-media">
+                        <div class="media-container technical-layer">
+                            <img src="assets/projects/p1_sketch.png" alt="The Concrete House - Plan">
+                            <div class="overlay-info">
+                                <span class="draw-type">Plan 1:100</span>
+                            </div>
+                        </div>
+                        <div class="media-container pictorial-layer">
+                            <img src="assets/projects/p1_render.png" alt="The Concrete House - View">
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <span class="project-number">01</span>
+                            <h3 class="project-title">The Concrete House</h3>
+                        </div>
+                        <div class="project-meta">
+                            <span>Residential</span>
+                            <span>2024</span>
+                            <span>Kerala, India</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2: Vertical / Offset -->
+                <a href="projects/project-2.html" class="project-card offset-top fade-in-section delay-200">
+                    <div class="project-media portrait-ratio">
+                        <div class="media-container technical-layer">
+                            <img src="assets/projects/p2_sketch.png" alt="Vertical Living - Cross Section">
+                            <div class="overlay-info">
+                                <span class="draw-type">Section A-A</span>
+                            </div>
+                        </div>
+                        <div class="media-container pictorial-layer">
+                            <img src="assets/projects/p2_render.png" alt="Vertical Living - Interior View">
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <span class="project-number">02</span>
+                            <h3 class="project-title">Vertical Living</h3>
+                        </div>
+                        <div class="project-meta">
+                            <span>Commercial</span>
+                            <span>2023</span>
+                            <span>Bangalore, India</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3: Standard -->
+                <a href="projects/project-3.html" class="project-card fade-in-section delay-300">
+                    <div class="project-media">
+                        <div class="media-container technical-layer">
+                            <img src="assets/projects/p3_sketch.png" alt="Urban Void - Site Plan">
+                        </div>
+                        <div class="media-container pictorial-layer">
+                            <img src="assets/projects/p3_render.png" alt="Urban Void - Plaza View">
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <span class="project-number">03</span>
+                            <h3 class="project-title">Urban Void</h3>
+                        </div>
+                        <div class="project-meta">
+                            <span>Conceptual</span>
+                            <span>2025</span>
+                            <span>Cochin, India</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 4: Feature -->
+                <a href="projects/project-4.html" class="project-card span-2 fade-in-section delay-100">
+                    <div class="project-media">
+                        <div class="media-container technical-layer">
+                            <img src="assets/projects/p4_sketch.png" alt="Civic Center - Section">
+                        </div>
+                        <div class="media-container pictorial-layer">
+                            <img src="assets/projects/p4_render.png" alt="Civic Center - Render">
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <span class="project-number">04</span>
+                            <h3 class="project-title">Civic Center</h3>
+                        </div>
+                        <div class="project-meta">
+                            <span>Public</span>
+                            <span>2025</span>
+                            <span>Chennai, India</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 5 -->
+                <a href="projects/project-5.html" class="project-card fade-in-section delay-200">
+                    <div class="project-media">
+                        <div class="media-container technical-layer">
+                            <img src="assets/projects/p5_sketch.png" alt="The Pavilion - Axonometric">
+                        </div>
+                        <div class="media-container pictorial-layer">
+                            <img src="assets/projects/p5_render.png" alt="The Pavilion - Photo">
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <span class="project-number">05</span>
+                            <h3 class="project-title">The Pavilion</h3>
+                        </div>
+                        <div class="project-meta">
+                            <span>Temporary</span>
+                            <span>2026</span>
+                            <span>Exhibition</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 6 -->
+                <a href="projects/project-6.html" class="project-card offset-top fade-in-section delay-300">
+                    <div class="project-media portrait-ratio">
+                        <div class="media-container technical-layer">
+                            <img src="assets/projects/p6_sketch.png" alt="Office Complex - Detail">
+                        </div>
+                        <div class="media-container pictorial-layer">
+                            <img src="assets/projects/p6_render.png" alt="Office Complex - Facade">
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <span class="project-number">06</span>
+                            <h3 class="project-title">Office Complex</h3>
+                        </div>
+                        <div class="project-meta">
+                            <span>Commercial</span>
+                            <span>2023</span>
+                            <span>Bangalore, India</span>
+                        </div>
+                    </div>
+                </a>
+
+
+
+
+            </div>
+        </section>
+
+        <section id="info" class="info-section">
+            <div class="info-container fade-in-section">
+                <!-- Column 1: Profile & Ethos -->
+                <div class="info-col profile-col">
+                    <div class="profile-image">
+                        <img src="assets/profile.png" alt="Sreehari Arun - Principal Architect">
+                    </div>
+                    <div class="profile-bio">
+                        <h4>Principal</h4>
+                        <p class="lead-text">Sreehari Arun</p>
+                        <p class="bio-text">Bridging the gap between rigorous technical documentation and emotive
+                            spatial experience. Influenced by the raw honesty of brutalism and the precision of
+                            modernism.</p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Process -->
+                <div class="info-col process-col">
+                    <h4>Methodology</h4>
+                    <div class="process-steps">
+                        <div class="step">
+                            <span class="step-num">01</span>
+                            <span class="step-name">Concept</span>
+                            <span class="step-desc">Identifying the core narrative</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">02</span>
+                            <span class="step-name">Rigor</span>
+                            <span class="step-desc">Technical development & detailing</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-num">03</span>
+                            <span class="step-name">Materiality</span>
+                            <span class="step-desc">Tactile realization of space</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column 3: Trust Signals -->
+                <div class="info-col trust-col">
+                    <div class="recognition-block">
+                        <h4>Recognition</h4>
+                        <ul class="clean-list">
+                            <li><span class="year">2025</span> Young Architects Award (Finalist)</li>
+                            <li><span class="year">2024</span> Dezeen Feature: 'The Concrete House'</li>
+                            <li><span class="year">2023</span> ArchDaily: 'Vertical Living'</li>
+                        </ul>
+                    </div>
+
+                    <div class="services-block">
+                        <h4>Services</h4>
+                        <ul class="clean-list">
+                            <li>Architectural Design</li>
+                            <li>Interior Environments</li>
+                            <li>Landscape Integration</li>
+                            <li>BIM Consultation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-left">
+            <span>&copy; 2026 Sreehari Arun</span>
+        </div>
+        <div class="footer-right">
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Behance</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
