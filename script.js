@@ -89,6 +89,74 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    // === Kinetic Features ===
+
+    // 1. Noise Overlay Injection
+    const noiseOverlay = document.createElement('div');
+    noiseOverlay.className = 'noise-overlay';
+    document.body.appendChild(noiseOverlay);
+
+    // 2. Page Transitions (Fade In)
+    setTimeout(() => {
+        document.body.classList.add('fade-in');
+    }, 50);
+
+    // Intercept Links for Fade Out
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            // Only intercept internal links that are not anchors on the same page
+            // and ignore mailto links
+            if (href && !href.startsWith('#') && !href.startsWith('mailto:') && targetIsInternal(href)) {
+                e.preventDefault();
+                document.body.classList.remove('fade-in');
+                document.body.classList.add('fade-out');
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 500); // Match CSS transition time
+            }
+        });
+    });
+
+    function targetIsInternal(url) {
+        // Simple check if it's a relative path or same domain
+        if (url.startsWith('http') && !url.includes(window.location.hostname)) {
+            return false;
+        }
+        return true;
+    }
+
+    // 3. Magnetic Buttons / Links
+    const magneticElements = document.querySelectorAll('.nav-link, .toggle-btn, .logo-link');
+
+    magneticElements.forEach(el => {
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            // Sensitivity factor
+            const factor = 10;
+            el.style.transform = `translate(${x / factor}px, ${y / factor}px)`;
+        });
+
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = 'translate(0, 0)';
+        });
+    });
+
+    // 4. Parallax Effect (Subtle)
+    const heroBg = document.querySelector('.hero-bg img');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+
+        // Hero Parallax
+        if (heroBg) {
+            heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
+        }
+    });
+
     // === Lightbox Logic ===
     const galleryItems = document.querySelectorAll('.gallery-item img');
     let lightbox = document.querySelector('.lightbox');
