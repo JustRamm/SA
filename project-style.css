@@ -5,11 +5,7 @@
     background-color: var(--bg-color);
 }
 
-.project-page .site-header {
-    background: transparent;
-    border-bottom: none;
-    padding-top: 2rem;
-}
+
 
 /* --- Split Hero Layout (Desktop) --- */
 .project-hero {
