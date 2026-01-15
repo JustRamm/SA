@@ -2,7 +2,7 @@
 
 A minimalist, high-performance portfolio website for Sreehari Arun, an architect specializing in brutalist, minimal, and technical design. The site serves as a digital exhibition space, blending rigorous technical documentation with emotive spatial rendering.
 
-![Project Preview](assets/projects/p1_render.png)
+![Project Preview](assets\projects\1\render_3.png)
 
 ## 🏛️ Design Philosophy
 
@@ -54,4 +54,4 @@ This project is static-site ready. It can be deployed to any static hosting prov
 ## 📜 License
 
 © 2026 Sreehari Arun. All Rights Reserved.
-Design and Code by [Your Name/Agency].
+Design and Code by [Abiram].
