@@ -18,7 +18,7 @@ function loadComponents() {
             <a href="${links.logo}" class="logo-link">
                 <!-- Logo Image Removed per user request -->
                 <div class="logo-text">
-                    <h1>Sreehari Arun</h1>
+                    <h1>Sreehari Ponathil</h1>
                     <span class="designation">Architect</span>
                 </div>
             </a>
@@ -35,7 +35,7 @@ function loadComponents() {
             
             <a href="${links.work}" class="nav-link" onclick="${isProjectPage ? "event.preventDefault(); history.back();" : ""}">Work</a>
             <a href="${links.practice}" class="nav-link">Practice</a>
-            <a href="mailto:hello@sreehariarun.com" class="nav-link">Contact</a>
+            <a href="mailto:sreehari1011362@gmail.com" class="nav-link">Contact</a>
         </nav>
 
         <div class="header-right">
@@ -65,10 +65,10 @@ function loadComponents() {
             <a href="${links.home}" class="mobile-link">Home</a>
             <a href="${links.work}" class="mobile-link">Work</a>
             <a href="${links.practice}" class="mobile-link">Practice</a>
-            <a href="mailto:hello@sreehariarun.com" class="mobile-link">Contact</a>
+            <a href="mailto:sreehari1011362@gmail.com" class="mobile-link">Contact</a>
         </nav>
         <div class="overlay-footer">
-            <span>&copy; 2026 Sreehari Arun</span>
+            <span>&copy; 2026 Sreehari Ponathil</span>
         </div>
     </div>
     `;
@@ -77,12 +77,11 @@ function loadComponents() {
     const footerHTML = `
     <footer class="site-footer">
         <div class="footer-left">
-            <span>&copy; 2026 Sreehari Arun</span>
+            <span>&copy; 2026 Sreehari Ponathil</span>
         </div>
         <div class="footer-right">
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Behance</a>
+            <a href="https://linkedin.com/in/sreehari-ponathil" target="_blank">LinkedIn</a>
+            <a href="https://behance.net/sreehariarun" target="_blank">Behance</a>
         </div>
     </footer>
     `;
