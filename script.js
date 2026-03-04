@@ -23,151 +23,158 @@ window.addEventListener('load', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
+    // === CRITICAL: Make page visible first — do this before anything else ===
+    // The body starts at opacity:0 in CSS. If any code below throws, the
+    // page would stay invisible. We set fade-in immediately to be safe.
+    document.body.classList.add('fade-in');
+
     // Inject reusable components (Header, Footer, Overlay)
     // Ensure components.js is loaded before script.js in HTML
-    if (typeof loadComponents === 'function') {
-        loadComponents();
-    }
-    // === View Toggle Logic ===
-    const toggleBtn = document.getElementById('view-toggle-btn');
-    const toggleOptions = document.querySelectorAll('.toggle-option');
-    const body = document.body;
+    try {
+        if (typeof loadComponents === 'function') {
+            loadComponents();
+        }
+        // === View Toggle Logic ===
+        const toggleBtn = document.getElementById('view-toggle-btn');
+        const toggleOptions = document.querySelectorAll('.toggle-option');
+        const body = document.body;
 
-    if (toggleBtn) {
-        toggleBtn.addEventListener('click', () => {
-            // Switch mode
-            if (body.classList.contains('mode-technical')) {
-                switchMode('pictorial');
-            } else {
-                switchMode('technical');
-            }
-        });
-    }
-
-    function switchMode(mode) {
-        // Update Body Class
-        body.classList.remove('mode-technical', 'mode-pictorial');
-        body.classList.add(`mode-${mode}`);
-
-        // Update Toggle Text visual state
-        toggleOptions.forEach(option => {
-            if (option.dataset.mode === mode) {
-                option.classList.add('active');
-            } else {
-                option.classList.remove('active');
-            }
-        });
-    }
-
-    // === Scroll Animations ===
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-
-    const animatedElements = document.querySelectorAll('.fade-in-section');
-    animatedElements.forEach(el => observer.observe(el));
-
-    // === Mobile Menu Toggle ===
-    const menuToggle = document.querySelector('.menu-toggle');
-    const overlayMenu = document.querySelector('.overlay-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-
-    if (menuToggle && overlayMenu) {
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            overlayMenu.classList.toggle('active');
-
-            // Prevent scrolling when menu is open
-            if (overlayMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Close menu when a link is clicked
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                overlayMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-    }
-
-    // === Scroll Spy for Navigation (Desktop) ===
-    function initScrollSpy() {
-        // Only run on non-project pages (Home)
-        if (document.body.classList.contains('project-page')) return;
-
-        const sections = ['hero', 'projects', 'info'];
-        const navLinks = document.querySelectorAll('.desktop-only .nav-link');
-
-        const onScroll = () => {
-            // Default to 'hero' content if at very top
-            let current = '';
-
-            sections.forEach(id => {
-                const section = document.getElementById(id);
-                if (section) {
-                    // Trigger point: when section reaches upper part of viewport
-                    // 150px offset handles header height and visual comfort
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-
-                    if (window.scrollY >= (sectionTop - 200)) {
-                        current = id;
-                    }
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', () => {
+                // Switch mode
+                if (body.classList.contains('mode-technical')) {
+                    switchMode('pictorial');
+                } else {
+                    switchMode('technical');
                 }
             });
+        }
 
-            // Special Case: At the very top, ensure Home (hero) is active
-            if (window.scrollY < 100) {
-                current = 'hero';
-            }
+        function switchMode(mode) {
+            // Update Body Class
+            body.classList.remove('mode-technical', 'mode-pictorial');
+            body.classList.add(`mode-${mode}`);
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-
-                // Check if link matches the current section
-                // We use includes('#id') to match standard anchors
-                const href = link.getAttribute('href');
-                if (href && current && href.includes('#' + current)) {
-                    link.classList.add('active');
+            // Update Toggle Text visual state
+            toggleOptions.forEach(option => {
+                if (option.dataset.mode === mode) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
                 }
             });
+        }
+
+        // === Scroll Animations ===
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
         };
 
-        window.addEventListener('scroll', onScroll);
-        // Initial check
-        onScroll();
-    }
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-    // Initialize Spy
-    initScrollSpy();
+        const animatedElements = document.querySelectorAll('.fade-in-section');
+        animatedElements.forEach(el => observer.observe(el));
 
-    // === Kinetic Features ===
+        // === Mobile Menu Toggle ===
+        const menuToggle = document.querySelector('.menu-toggle');
+        const overlayMenu = document.querySelector('.overlay-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
 
-    // 1. Noise Overlay Injection
-    const noiseOverlay = document.createElement('div');
-    noiseOverlay.className = 'noise-overlay';
-    document.body.appendChild(noiseOverlay);
+        if (menuToggle && overlayMenu) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                overlayMenu.classList.toggle('active');
 
-    // 2. Page Transitions (Fade In)
-    setTimeout(() => {
+                // Prevent scrolling when menu is open
+                if (overlayMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Close menu when a link is clicked
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    overlayMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // === Scroll Spy for Navigation (Desktop) ===
+        function initScrollSpy() {
+            // Only run on non-project pages (Home)
+            if (document.body.classList.contains('project-page')) return;
+
+            const sections = ['hero', 'projects', 'info'];
+            const navLinks = document.querySelectorAll('.desktop-only .nav-link');
+
+            const onScroll = () => {
+                // Default to 'hero' content if at very top
+                let current = '';
+
+                sections.forEach(id => {
+                    const section = document.getElementById(id);
+                    if (section) {
+                        // Trigger point: when section reaches upper part of viewport
+                        // 150px offset handles header height and visual comfort
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+
+                        if (window.scrollY >= (sectionTop - 200)) {
+                            current = id;
+                        }
+                    }
+                });
+
+                // Special Case: At the very top, ensure Home (hero) is active
+                if (window.scrollY < 100) {
+                    current = 'hero';
+                }
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+
+                    // Check if link matches the current section
+                    // We use includes('#id') to match standard anchors
+                    const href = link.getAttribute('href');
+                    if (href && current && href.includes('#' + current)) {
+                        link.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', onScroll);
+            // Initial check
+            onScroll();
+        }
+
+        // Initialize Spy
+        initScrollSpy();
+
+        // === Kinetic Features ===
+
+        // 1. Noise Overlay Injection
+        const noiseOverlay = document.createElement('div');
+        noiseOverlay.className = 'noise-overlay';
+        document.body.appendChild(noiseOverlay);
+
+    } catch (e) {
+        // Ensure page is always visible even if something above threw
+        console.error('Script init error:', e);
         document.body.classList.add('fade-in');
-    }, 50);
+    }
 
     // Intercept Links for Fade Out
     document.querySelectorAll('a').forEach(link => {

@@ -75,17 +75,33 @@ ul {
 }
 
 /* --- Page Transitions --- */
+/* Fallback: if JS doesn't fire (e.g. script error on Vercel), the page
+   will still become visible after 1.5s via the animation. */
+@keyframes revealBody {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 body {
     opacity: 0;
+    animation: revealBody 0.6s ease-in-out 1.5s forwards;
     transition: opacity 0.5s ease-in-out;
 }
 
 body.fade-in {
     opacity: 1;
+    animation: none;
+    /* JS took over — stop the CSS fallback */
 }
 
 body.fade-out {
     opacity: 0;
+    animation: none;
 }
 
 /* --- Structural Grid Lines --- */
